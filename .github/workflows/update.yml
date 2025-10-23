@@ -1,7 +1,8 @@
-name: Auto Update 
+name: Auto Update (Every 72 Hours)
+
 on:
   schedule:
-    - cron: "0 */24 * * *"  # every 72 hours
+    - cron: "0 */72 * * *"  # every 72 hours
   workflow_dispatch:  # allow manual runs
 
 jobs:
@@ -20,17 +21,22 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install selenium beautifulsoup4 jinja2 requests lxml
+          pip install selenium beautifulsoup4 jinja2
 
-      - name: Set up Chrome for Selenium
+      - name: Install Google Chrome
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser chromium-chromedriver
-          echo "Chrome and ChromeDriver installed."
+          sudo apt-get install -y wget unzip
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          google-chrome --version
+
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v1.3.0
+        with:
+          chrome-version: stable  # automatically uses the matching ChromeDriver
 
       - name: Run main.py
-        env:
-          DISPLAY: ":99"
         run: |
           python main.py
 
