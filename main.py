@@ -382,7 +382,7 @@ output = template.render(
     update_time=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 )
 
-with open("results.html", "w", encoding="utf-8") as f:
+with open("index.html", "w", encoding="utf-8") as f:
     f.write(output)
 
 # --- Generate Price History Dashboard ---
@@ -779,7 +779,7 @@ history_output = history_template_obj.render(
 with open("price_history.html", "w", encoding="utf-8") as f:
     f.write(history_output)
 
-print(f"✅ Done! Saved {len(products)} products to results.html")
+print(f"✅ Done! Saved {len(products)} products to index.html")
 print(f"📊 Price history dashboard saved to price_history.html")
 print(f"📈 Tracking {len(products_with_history)} products with price history")
-os.startfile("results.html")
+os.startfile("index.html")
