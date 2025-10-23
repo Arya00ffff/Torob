@@ -32,7 +32,7 @@ jobs:
           google-chrome --version
 
       - name: Setup ChromeDriver
-        uses: nanasess/setup-chromedriver@v1.3.0
+        uses: nanasess/setup-chromedriver@latest
         with:
           chrome-version: stable  # automatically uses the matching ChromeDriver
 
