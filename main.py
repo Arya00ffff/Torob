@@ -782,4 +782,3 @@ with open("price_history.html", "w", encoding="utf-8") as f:
 print(f"✅ Done! Saved {len(products)} products to index.html")
 print(f"📊 Price history dashboard saved to price_history.html")
 print(f"📈 Tracking {len(products_with_history)} products with price history")
-os.startfile("index.html")
